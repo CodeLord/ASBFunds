@@ -36,4 +36,24 @@ class AsbFundsName(Base):
         return "Fund %s is %s" % (self.name, self.id)
 
 
-Base.metadata.create_all(engine)
+def create_table():
+    Base.metadata.create_all(engine)
+
+
+def insert_funds_name():
+    funds_name = ['Balanced Fund',
+                  'Conservative Fund',
+                  'Conservative Plus Fund',
+                  'Global Property Shares Fund',
+                  'Growth Fund',
+                  'Moderate Fund',
+                  'Positive Impact Fund',
+                  'World Fixed Interest Fund',
+                  'World Shares Fund']
+
+    for fund_name in funds_name:
+        fund_name_data = AsbFundsName(name=fund_name)
+        session.add(fund_name_data)
+        session.commit()
+
+insert_funds_name()
