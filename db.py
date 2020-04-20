@@ -3,9 +3,9 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine, Column, String, Integer, Numeric, ForeignKey
 import pymysql
 
-# Connect to DB
 Base = declarative_base()
 
+# Connect to DB
 engine = create_engine('mysql+pymysql://nzdatauser:CodeLord2020@localhost:3306/nzdata', pool_recycle=3600)
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -55,5 +55,3 @@ def insert_funds_name():
         fund_name_data = AsbFundsName(name=fund_name)
         session.add(fund_name_data)
         session.commit()
-
-insert_funds_name()
